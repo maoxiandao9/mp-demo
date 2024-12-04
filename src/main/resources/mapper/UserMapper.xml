@@ -13,4 +13,17 @@
         LIMIT 10
     </select>
 
+    <select id="queryUserByIdAndAddr" resultType="com.itheima.mp.domain.po.User">
+        SELECT *
+        FROM tb_user u
+        INNER JOIN address a ON u.id = a.user_id
+        WHERE u.id
+        <foreach collection="ids" separator="," item="id" open="IN (" close=")">
+            #{id}
+        </foreach>
+        AND a.city = #{city}
+    </select>
+<!--    <select id="queryUserByIdAndAddr" resultType="com.itheima.mp.domain.po.User">-->
+<!--        SELECT * FROM user u INNER JOIN address a ON u.id = a.user_id ${ew.customSqlSegment}-->
+<!--    </select>-->
 </mapper>
