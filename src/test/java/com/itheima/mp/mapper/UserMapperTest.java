@@ -17,7 +17,7 @@ class UserMapperTest {
     @Test
     void testInsert() {
         User user = new User();
-        user.setId(5L);
+//        user.setId(5L);
         user.setUsername("Lucy");
         user.setPassword("123");
         user.setPhone("18688990011");
@@ -38,6 +38,12 @@ class UserMapperTest {
     @Test
     void testQueryByIds() {
         List<User> users = userMapper.selectBatchIds(List.of(1L, 2L, 3L, 4L));
+        users.forEach(System.out::println);
+    }
+
+    @Test
+    void testQueryByIds2() {
+        List<User> users = userMapper.queryUserByIds(List.of(1L, 2L, 3L, 4L));
         users.forEach(System.out::println);
     }
 
